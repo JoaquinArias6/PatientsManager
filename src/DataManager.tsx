@@ -8,12 +8,16 @@ import PatientModal from './components/PatientModal/PatientModal';
 const DataManager = () => {
   const { patients } = usePatientsData()
   const [localPatients, setLocalPatients] = useState<Patient[]>([]);
-
+  const [isCreatingPatient, setIsCreatingPatient] = useState<boolean>(false);
   const [editPatient, setEditPatient] = useState<Patient | null>(null);
 
   useEffect(() => {
     setLocalPatients(patients);
   }, [patients]);
+
+  const handleCreatePatient = (newPatient: Patient) => {
+    setLocalPatients(prev => [...prev, newPatient])
+  }
 
   const handleEditPatient = (patient: Patient) => {
     console.log("IS EDITING")
@@ -27,15 +31,22 @@ const DataManager = () => {
 
   console.log(editPatient)
 
-
   return (
     <>
-      <div>Data Manager</div>
+      <h1>Data Manager</h1>
+      <button onClick={() => setIsCreatingPatient(true)}>+ New Patient</button>
       <PatientsList 
         patients={localPatients}
         onEditPatient={handleEditPatient}
       />
-      {editPatient && 
+      { isCreatingPatient && 
+        <PatientModal
+          patient={null}
+          onModalClose={() => setIsCreatingPatient(false)}
+          onSave={handleCreatePatient}
+        />
+      }
+      { editPatient && 
         <PatientModal
           patient={editPatient}
           onModalClose={() => setEditPatient(null)}
