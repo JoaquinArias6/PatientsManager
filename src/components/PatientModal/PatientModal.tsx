@@ -3,13 +3,21 @@ import type { Patient } from "../../types/Patient";
 import "./PatientModal.css"
 
 type props = {
-    patient: Patient;
+    patient: Patient | null;
     onModalClose: () => void;
-    onSave: (updatedPatient: Patient) => void;
+    onSave: (patient: Patient) => void;
 };
 
 const PatientModal = ({ patient, onModalClose, onSave }: props) => {
-    const [formData, setFormData] = useState<Patient>(patient);
+    const [formData, setFormData] = useState<Patient>(
+      patient || {
+        id: crypto.randomUUID(),
+        name: "",
+        avatar: "",
+        description: "",
+        website: "",
+      }
+    );
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -28,7 +36,7 @@ const PatientModal = ({ patient, onModalClose, onSave }: props) => {
     return (
       <div className="modal-container">
         <form onSubmit={handleSubmit}>
-          <h2>Edit {patient.name}</h2>
+          <h2>{ patient ? `Edit ${patient.name}` : 'Add New Patient'}</h2>
           <label>
               Name:
               <input 
