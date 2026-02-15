@@ -4,9 +4,10 @@ import './PatientCard.css'
 
 type props = {
   patient: Patient;
+  onEdit: (patient: Patient) => void;
 }
 
-const PatientCard = ({patient}: props) => {
+const PatientCard = ({patient, onEdit}: props) => {
   const [isExpanded, setExpanded] = useState<boolean>(false);
 
   return (
@@ -20,7 +21,7 @@ const PatientCard = ({patient}: props) => {
       { isExpanded &&
         <p>{patient.description}</p>
       }
-      <button className="button" onClick={() => {}}>Edit</button>
+      <button className="button" onClick={() => onEdit(patient)}>Edit Patient</button>
     </div>
   );
 }
