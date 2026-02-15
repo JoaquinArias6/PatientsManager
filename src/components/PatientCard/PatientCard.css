@@ -1,0 +1,29 @@
+.patient-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    border: 2px solid #57C7FF;
+    padding: 10px;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.patient-avatar {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 25px;
+    align-self: center;
+}
+
+.patient-link {
+    color: #57C7FF;
+    padding-bottom: 20px;
+}
+
+.button {
+    width: 70%;
+    background-color: #57C7FF;
+    align-self: center;
+}
