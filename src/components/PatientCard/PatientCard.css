@@ -4,17 +4,33 @@
     border-radius: 25px;
     border: 2px solid #57C7FF;
     padding: 10px;
-    max-width: 300px;
+    max-width: 600px;
     width: 100%;
     height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.patient-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    min-width: 0;
+}
+
+.patient-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
 }
 
 .patient-avatar {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 25px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
     align-self: center;
+    border-radius: 50%;
 }
 
 .patient-link {
@@ -23,7 +39,14 @@
 }
 
 .button {
-    width: 70%;
+    width: 60%;
     background-color: #57C7FF;
     align-self: center;
+    margin-bottom: 10px;
+}
+
+.edit-button {
+    width: 30%;
+    background-color: #57C7FF;
+    margin-bottom: 5px;
 }
