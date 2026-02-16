@@ -16,7 +16,8 @@ const DataManager = () => {
   }, [patients]);
 
   const handleCreatePatient = (newPatient: Patient) => {
-    setLocalPatients(prev => [...prev, newPatient])
+    setLocalPatients(prev => [newPatient, ...prev])
+    alert("User Created Successfully!")
   }
 
   const handleEditPatient = (patient: Patient) => {
@@ -27,6 +28,7 @@ const DataManager = () => {
   const handleSavePatient = (updatedPatient: Patient) => {
     setLocalPatients(prev =>
       prev.map(p => p.id === updatedPatient.id ? updatedPatient : p))
+    alert("User Edited Successfully!")
   }
 
   console.log(editPatient)
